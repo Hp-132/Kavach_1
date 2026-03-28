@@ -1,0 +1,23 @@
+{
+  "name": "kavach-safety-torch",
+  "version": "1.0.0",
+  "description": "KAVACH - Women Safety Smart Torch + Companion Web App",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2",
+    "bcryptjs": "^2.4.3",
+    "express-session": "^1.17.3",
+    "morgan": "^1.10.0",
+    "sqlite3": "^5.1.6",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
