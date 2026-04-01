@@ -1,8 +1,22 @@
+// ==========================================
+// 1. INITIAL GPS COORDINATES (Edit here!)
+// ==========================================
+// Change these to your starting point (e.g., your city)
 let latitude = 21.1702;
 let longitude = 72.8311;
-let isHardwareEnabled = false;
+
+// ==========================================
+// 2. HARDWARE OVERRIDE FLAG
+// ==========================================
+// When hardware sends data, this becomes true automatically
+let isHardwareEnabled = false; 
 let lastUpdateTime = new Date().toISOString();
 
+/**
+ * SIMULATOR LOGIC: 
+ * This function adds a tiny random movement to the marker 
+ * so it looks "live" on the map during the demo.
+ */
 function updateSimulatedLocation() {
     if (!isHardwareEnabled) {
         // Apply a small random offset to simulate movement
@@ -16,6 +30,9 @@ function updateSimulatedLocation() {
 // Update simulation every 5 seconds
 let simulationInterval = setInterval(updateSimulatedLocation, 5000);
 
+/**
+ * Returns current location to the Backend API
+ */
 function getLatestLocation() {
     return {
         latitude: parseFloat(latitude.toFixed(6)),
@@ -25,6 +42,10 @@ function getLatestLocation() {
     };
 }
 
+/**
+ * This function is called by server.js when real 
+ * hardware data arrives at the /api/location endpoint.
+ */
 function updateRealLocation(newLat, newLng) {
     latitude = parseFloat(newLat);
     longitude = parseFloat(newLng);
@@ -32,9 +53,9 @@ function updateRealLocation(newLat, newLng) {
     
     if (!isHardwareEnabled) {
         isHardwareEnabled = true;
-        console.log("Hardware GPS data received. Stopping simulator.");
-        // We could clearInterval here, but let's just keep the flag check 
-        // to handle cases where hardware might drop out later
+        console.log(">>> [ALERT] Real Hardware GPS data detected! Stopping simulation.");
+        // Note: The simulator loop above (line 30) stops moving the marker 
+        // because of the check on line 18.
     }
 }
 

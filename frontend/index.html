@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KAVACH | Women Safety Smart Torch</title>
     <!-- Leaflet Map CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Navigation -->
@@ -49,7 +52,8 @@
                     <button type="submit" class="btn btn-primary">Login Now</button>
                 </form>
                 <div style="margin-top: 1.5rem; color: var(--text-muted);">
-                    Don't have an account? <a onclick="showScreen('register')" style="color: var(--primary-color); cursor: pointer;">Sign Up</a>
+                    Don't have an account? <a onclick="showScreen('register')"
+                        style="color: var(--primary-color); cursor: pointer;">Sign Up</a>
                 </div>
             </div>
         </section>
@@ -74,20 +78,22 @@
                     <button type="submit" class="btn btn-primary">Register Account</button>
                 </form>
                 <div style="margin-top: 1.5rem; color: var(--text-muted);">
-                    Already a member? <a onclick="showScreen('login')" style="color: var(--primary-color); cursor: pointer;">Sign In</a>
+                    Already a member? <a onclick="showScreen('login')"
+                        style="color: var(--primary-color); cursor: pointer;">Sign In</a>
                 </div>
             </div>
         </section>
 
         <!-- DASHBOARD SCREEN -->
         <section id="dashboard-screen" class="screen hidden">
-            <h1 style="margin-bottom: 2rem;">Safety Dashboard <span id="user-display-name" style="font-weight: 400; font-size: 1.2rem; color: var(--text-muted); float: right;"></span></h1>
-            
+            <h1 style="margin-bottom: 2rem;">Safety Dashboard <span id="user-display-name"
+                    style="font-weight: 400; font-size: 1.2rem; color: var(--text-muted); float: right;"></span></h1>
+
             <div class="dashboard-grid">
-                
+
                 <!-- Left: Controls & GPS -->
                 <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    
+
                     <div class="card sos-button-container">
                         <button class="btn-sos" id="sos-btn">
                             SOS
@@ -101,27 +107,36 @@
                     <div class="card">
                         <h3>Device Controls (Simulation)</h3>
                         <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-                            <div style="flex: 1; text-align: center; border: 1px solid #333; padding: 1rem; border-radius: 12px; cursor: pointer;" onclick="toggleFlashlight()">
-                                <i class="fas fa-flashlight" style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <div style="flex: 1; text-align: center; border: 1px solid #333; padding: 1rem; border-radius: 12px; cursor: pointer;"
+                                onclick="toggleFlashlight()">
+                                <i class="fas fa-flashlight"
+                                    style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
                                 Flashlight <span id="flashlight-status" class="flashlight-indicator"></span>
                             </div>
-                            <div style="flex: 1; text-align: center; border: 1px solid #333; padding: 1rem; border-radius: 12px; cursor: pointer;" onclick="toggleSiren()">
-                                <i class="fas fa-volume-up" id="siren-icon" style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <div style="flex: 1; text-align: center; border: 1px solid #333; padding: 1rem; border-radius: 12px; cursor: pointer;"
+                                onclick="toggleSiren()">
+                                <i class="fas fa-volume-up" id="siren-icon"
+                                    style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
                                 Siren
                             </div>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
                             <h3>Live GPS Coordinates</h3>
                             <div id="gps-status-badge"></div>
                         </div>
                         <div class="location-info">
-                            <div><span style="color: var(--text-muted)">Latitude:</span> <span id="lat-val">Loading...</span></div>
-                            <div><span style="color: var(--text-muted)">Longitude:</span> <span id="lng-val">Loading...</span></div>
-                            <div><span style="color: var(--text-muted)">Last Updated:</span> <span id="time-val">-</span></div>
-                            <a id="gmaps-link" href="#" target="_blank" style="color: var(--primary-color); text-decoration: none; margin-top: 0.5rem; font-weight: 700;">
+                            <div><span style="color: var(--text-muted)">Latitude:</span> <span
+                                    id="lat-val">Loading...</span></div>
+                            <div><span style="color: var(--text-muted)">Longitude:</span> <span
+                                    id="lng-val">Loading...</span></div>
+                            <div><span style="color: var(--text-muted)">Last Updated:</span> <span
+                                    id="time-val">-</span></div>
+                            <a id="gmaps-link" href="#" target="_blank"
+                                style="color: var(--primary-color); text-decoration: none; margin-top: 0.5rem; font-weight: 700;">
                                 <i class="fas fa-map-marker-alt"></i> View on Google Maps
                             </a>
                         </div>
@@ -133,7 +148,9 @@
                     <div class="card">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <h3>Real-time Tracking</h3>
-                            <button class="btn" style="width: auto; padding: 0.5rem 1rem; font-size: 0.8rem; background: #333; color: white;" onclick="centerMap()">Center Map</button>
+                            <button class="btn"
+                                style="width: auto; padding: 0.5rem 1rem; font-size: 0.8rem; background: #333; color: white;"
+                                onclick="centerMap()">Center Map</button>
                         </div>
                         <div id="map"></div>
                     </div>
@@ -159,10 +176,23 @@
             <h1>Emergency Contacts</h1>
             <div class="card" style="margin-top: 1.5rem; max-width: 600px;">
                 <h3>Add New Contact</h3>
-                <form id="contact-form" style="margin-top: 1rem; display: flex; gap: 1rem;">
-                    <input type="text" id="contact-name" placeholder="Name" required style="flex: 2; padding: 0.8rem; border-radius: 8px; border: 1px solid #333; background: #0b0d17; color: white;">
-                    <input type="tel" id="contact-phone" placeholder="Mobile Number" required style="flex: 2; padding: 0.8rem; border-radius: 8px; border: 1px solid #333; background: #0b0d17; color: white;">
-                    <button type="submit" class="btn btn-primary" style="flex: 1;">Save</button>
+                <form id="contact-form" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: flex; gap: 1rem;">
+                        <input type="text" id="contact-name" placeholder="Name" required
+                            style="flex: 1; padding: 0.8rem; border-radius: 8px; border: 1px solid #333; background: #0b0d17; color: white;">
+                        <input type="tel" id="contact-phone" placeholder="Mobile Number" required
+                            style="flex: 1; padding: 0.8rem; border-radius: 8px; border: 1px solid #333; background: #0b0d17; color: white;">
+                    </div>
+                    <div style="display: flex; gap: 2rem; align-items: center; padding: 0 0.5rem;">
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                            <input type="checkbox" id="contact-sms" checked> Enable SMS
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;"
+                            title="Only 1 contact can be the primary caller">
+                            <input type="checkbox" id="contact-call"> Set as Primary Caller
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Add Contact</button>
                 </form>
             </div>
 
@@ -244,7 +274,9 @@
     </div>
 
     <!-- Leaflet Script -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="script.js"></script>
 </body>
+
 </html>
